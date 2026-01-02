@@ -1,0 +1,621 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Marck+Script&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0;
+    padding: 0;
+}
+
+td {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+body {
+    background:
+        linear-gradient(135deg, #2d3561 0%, #1a1f3a 50%, #2d3561 100%);
+    font-family: 'Caveat', cursive;
+    padding: 40px 20px;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139, 172, 255, 0.1) 0%, transparent 50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1em;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.container td {
+    vertical-align: top;
+}
+
+.letter {
+    background:
+        linear-gradient(135deg, #faf8f3 0%, #f5f1e8 50%, #faf8f3 100%);
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1.2s ease forwards;
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.4),
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 0 100px rgba(0, 0, 0, 0.02);
+    width: 100%;
+    display: table;
+}
+
+.letter td {
+    vertical-align: top;
+}
+
+.letter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(139, 123, 95, 0.03) 2px,
+            rgba(139, 123, 95, 0.03) 4px),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+}
+
+.contest-badge {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background: rgba(45, 53, 97, 0.08);
+    border: 2px solid rgba(45, 53, 97, 0.2);
+    padding: 8px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d3561;
+    font-family: 'Caveat', cursive;
+    transform: rotate(-3deg);
+    z-index: 10;
+    letter-spacing: 0.5px;
+}
+
+.stamp {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 80px;
+    height: 100px;
+    background: linear-gradient(135deg, #f0e6d2 0%, #e6dcc8 100%);
+    border: 3px dashed rgba(139, 123, 95, 0.4);
+    padding: 8px;
+    z-index: 10;
+    transform: rotate(8deg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.stamp-inner {
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(139, 123, 95, 0.3);
+    display: table;
+}
+
+.stamp-inner td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.stamp-icon {
+    font-size: 32px;
+    padding: 8px 0 0;
+}
+
+.stamp-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2d3561;
+    font-family: 'Caveat', cursive;
+    padding: 0 0 8px;
+}
+
+.postmark {
+    position: absolute;
+    top: 140px;
+    right: 25px;
+    width: 100px;
+    height: 100px;
+    z-index: 9;
+    opacity: 0.4;
+}
+
+.postmark-circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #8b7b5f;
+    border-radius: 50%;
+}
+
+.postmark-circle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #8b7b5f;
+}
+
+.postmark-circle::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 3px;
+    height: 100%;
+    background: #8b7b5f;
+}
+
+.postmark-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: 700;
+    color: #8b7b5f;
+    text-align: center;
+    white-space: nowrap;
+    font-family: 'Caveat', cursive;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header {
+    background: transparent;
+    padding: 50px 40px 30px;
+    text-align: center;
+    position: relative;
+    border-bottom: 2px solid rgba(139, 123, 95, 0.15);
+    z-index: 3;
+}
+
+.header::before {
+    content: '❄';
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 32px;
+    opacity: 0.3;
+    color: #8b7b5f;
+}
+
+.header::after {
+    content: '❄';
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 32px;
+    opacity: 0.3;
+    color: #8b7b5f;
+}
+
+.header h1 {
+    font-size: 52px;
+    color: #2d3561;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-family: 'Marck Script', cursive;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header .year {
+    font-size: 22px;
+    color: #8b7b5f;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+    font-family: 'Caveat', cursive;
+    text-align: center;
+}
+
+.header table {
+    width: 100%;
+}
+
+.content {
+    padding: 50px 40px;
+    position: relative;
+    z-index: 3;
+}
+
+.content table {
+    width: 100%;
+}
+
+.content td {
+    vertical-align: top;
+}
+
+.greeting {
+    font-size: 42px;
+    color: #2d3561;
+    margin-bottom: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: 'Marck Script', cursive;
+}
+
+.intro {
+    font-size: 24px;
+    color: #4a4a4a;
+    line-height: 1.3;
+    margin-bottom: 40px;
+    font-weight: 500;
+    padding-bottom: 20px;
+}
+
+.section {
+    margin-bottom: 32px;
+    padding: 28px 32px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 3px solid rgba(139, 123, 95, 0.3);
+    background: rgba(250, 248, 243, 0.5);
+    width: 100%;
+    display: table;
+}
+
+.section td {
+    vertical-align: top;
+}
+
+.section::before {
+    content: '✎';
+    position: absolute;
+    top: 20px;
+    left: -15px;
+    font-size: 24px;
+    color: #8b7b5f;
+    opacity: 0.6;
+    transform: rotate(-15deg);
+}
+
+.section:hover {
+    transform: translateX(8px);
+    border-left-color: rgba(139, 123, 95, 0.6);
+}
+
+.section-2025 {
+    border-left-color: rgba(218, 165, 32, 0.5);
+}
+
+.section-2025::before {
+    content: '★';
+    color: goldenrod;
+}
+
+.section-2026 {
+    border-left-color: rgba(70, 130, 180, 0.5);
+}
+
+.section-2026::before {
+    content: '✦';
+    color: steelblue;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #2d3561;
+    font-family: 'Marck Script', cursive;
+    padding: 15px;
+}
+
+.section-text {
+    font-size: 24px;
+    line-height: 1.8;
+    color: #3a3a3a;
+    font-weight: 500;
+    padding: 15px;
+}
+
+.gifts-title {
+    font-size: 32px;
+    color: #2d3561;
+    font-weight: 700;
+    text-align: center;
+    margin: 48px 0 32px;
+    font-family: 'Marck Script', cursive;
+    position: relative;
+}
+
+
+.gifts {
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.gifts td {
+    padding-bottom: 20px;
+}
+
+.gifts tr:last-child td {
+    padding-bottom: 0;
+}
+
+.gift-item {
+    padding: 20px 28px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: 2px dashed rgba(139, 123, 95, 0.25);
+    background: rgba(255, 255, 255, 0.4);
+    position: relative;
+    width: 100%;
+    display: table;
+}
+
+.gift-item td {
+    vertical-align: middle;
+}
+
+
+.gift-item:hover::before {
+    left: 12px;
+    opacity: 1;
+}
+
+.gift-item:hover {
+    transform: translateX(8px);
+    border-color: rgba(139, 123, 95, 0.5);
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.gift-icon {
+    font-size: 36px;
+    width: 70px;
+    text-align: center;
+    padding-right: 20px;
+}
+
+.gift-name {
+    font-size: 22px;
+    font-weight: 600;
+    color: #2d3561;
+    width: auto;
+}
+
+.conclusion {
+    padding: 32px 40px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    position: relative;
+    border-top: 2px solid rgba(139, 123, 95, 0.15);
+    border-bottom: 2px solid rgba(139, 123, 95, 0.15);
+    color: #2d3561;
+    font-weight: 600;
+    font-style: italic;
+    width: 100%;
+    display: table;
+}
+
+.conclusion td {
+    text-align: center;
+}
+
+.conclusion::before {
+    content: '✨';
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    opacity: 0.5;
+}
+
+.conclusion::after {
+    content: '✨';
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    opacity: 0.5;
+}
+
+.conclusion-text {
+    position: relative;
+    z-index: 1;
+}
+
+.signature {
+    text-align: right;
+    padding: 20px 0;
+    position: relative;
+    width: 100%;
+    display: table;
+}
+
+.signature td {
+    text-align: right;
+}
+
+.signature::before {
+    content: '';
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(178, 34, 34, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.signature-text {
+    font-size: 26px;
+    color: #2d3561;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-family: 'Marck Script', cursive;
+}
+
+.signature-date {
+    font-size: 20px;
+    color: #8b7b5f;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 38px;
+    }
+
+    .header::before,
+    .header::after {
+        font-size: 24px;
+    }
+
+    .content {
+        padding: 35px 28px;
+    }
+
+    .section {
+        padding: 24px 28px;
+    }
+
+    .greeting {
+        font-size: 34px;
+    }
+
+    .intro {
+        font-size: 20px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .section-text {
+        font-size: 19px;
+    }
+
+    .gifts-title {
+        font-size: 28px;
+    }
+
+    .gift-item {
+        padding: 18px 24px;
+    }
+
+    .gift-name {
+        font-size: 19px;
+    }
+
+    .conclusion {
+        font-size: 20px;
+        padding: 28px 30px;
+    }
+
+    .signature-text {
+        font-size: 22px;
+    }
+
+    .signature-date {
+        font-size: 18px;
+    }
+
+    .contest-badge {
+        font-size: 14px;
+        padding: 6px 16px;
+        top: 20px;
+        left: 20px;
+    }
+
+    .stamp {
+        width: 65px;
+        height: 82px;
+        top: 20px;
+        right: 20px;
+    }
+
+    .stamp-icon {
+        font-size: 26px;
+    }
+
+    .stamp-text {
+        font-size: 14px;
+    }
+
+    .postmark {
+        width: 80px;
+        height: 80px;
+        top: 110px;
+        right: 15px;
+    }
+}
